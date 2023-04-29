@@ -23,3 +23,15 @@ The script will extract the words, definitions, and examples from the list(s) an
 Enter Vocabulary.com link: https://www.vocabulary.com/lists/23400
 Words, definitions, and examples have been written to 100_Top_SAT_Words_-_Vocabulary_List__Vocabularycom.txt.
 ```
+
+## The example output
+```
+abate	become less in amount or intensity	
+abdicate	give up power, duties, or obligations	
+aberration	a state or condition markedly different from the norm	
+abstain	refrain from doing, consuming, or partaking in something	
+adversity	a state of misfortune or affliction	
+aesthetic	characterized by an appreciation of beauty or good taste	
+amicable	characterized by friendship and good will	
+anachronistic	chronologically misplaced	
+```
