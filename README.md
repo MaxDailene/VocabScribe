@@ -35,4 +35,17 @@ aesthetic	characterized by an appreciation of beauty or good taste
 amicable	characterized by friendship and good will	
 anachronistic	chronologically misplaced	
 ...
+spurious	plausible but false	
+submissive	inclined or willing to give in to orders or wishes of others	
+substantiate	establish or strengthen as with new evidence or facts	
+subtle	difficult to detect or grasp by the mind or analyze	
+superficial	of, affecting, or being on or near the surface	
+superfluous	more than is needed, desired, or required	
+surreptitious	marked by quiet and caution and secrecy	
+tactful	having a sense of what is considerate in dealing with others	
+tenacious	stubbornly unyielding	
+transient	lasting a very short time	
+venerable	profoundly honored	
+vindicate	show to be right by providing justification or proof	
+wary	marked by keen caution and watchful prudence	
 ```
