@@ -34,4 +34,5 @@ adversity	a state of misfortune or affliction
 aesthetic	characterized by an appreciation of beauty or good taste	
 amicable	characterized by friendship and good will	
 anachronistic	chronologically misplaced	
+...
 ```
