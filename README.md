@@ -1,6 +1,6 @@
 # Vocabulary.com Scraper
 
-This is a Python script that scrapes Vocabulary.com lists and retrieves words, definitions, and examples in a .txt format which you can then import into Anki.
+This is a Python script that scrapes Vocabulary.com lists and retrieves words, definitions, and examples in a .txt format which you can then import into Anki and learn these words en masse.
 
 ## Requirements
 
