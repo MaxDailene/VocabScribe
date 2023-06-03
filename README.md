@@ -5,7 +5,7 @@ This is a Python script that scrapes Vocabulary.com lists and retrieves words, d
 ## Requirements
 
 - Beautiful Soup library
-- selenium library
+- selenium package
 - Chrome WebDriver
 
 You can install the libraries using pip:
