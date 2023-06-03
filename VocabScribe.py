@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 import time
 import os
+import random
 
 webdriver_path = 'Chrome'
 
@@ -38,7 +39,8 @@ if wordlist:
         links = f.read().splitlines()
 
     for link in links:
-        time.sleep(5)
+        sleep_duration = random.randint(6, 15)
+        time.sleep(sleep_duration)
         driver = webdriver.Chrome(service=Service(webdriver_path))
         driver.get(link)
         html_content = driver.page_source
