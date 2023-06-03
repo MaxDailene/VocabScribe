@@ -18,6 +18,7 @@ html_content = driver.page_source
 soup = BeautifulSoup(html_content, 'html.parser')
 
 wordlist = soup.find_all('li', class_='wordlist')
+
 if wordlist:
     links = []
     for li in wordlist:
@@ -28,8 +29,17 @@ if wordlist:
                 link = "https://www.vocabulary.com/" + h2.find('a')['href']
                 links.append(link)
 
+    with open('Links.txt', 'w', encoding='utf-8') as f:
+        f.write('\n'.join(links))
+
+    driver.quit()
+
+    with open('Links.txt', 'r') as f:
+        links = f.read().splitlines()
+
     for link in links:
         time.sleep(5)
+        driver = webdriver.Chrome(service=Service(webdriver_path))
         driver.get(link)
         html_content = driver.page_source
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -51,6 +61,7 @@ if wordlist:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write('\n'.join(word_list))
         print(f"Words, definitions, and examples have been written to {filename}.")
+        driver.quit()
 else:
     words = soup.find_all('a', class_='word')
     definitions = soup.find_all('div', class_='definition')
