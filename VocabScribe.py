@@ -1,4 +1,3 @@
-import requests
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
@@ -90,4 +89,5 @@ with open(batch_filename, 'w', encoding='utf-8') as batch_file:
             with open(filename, 'r', encoding='utf-8') as f:
                 batch_file.write(f.read().strip() + '\n')
 
-os.remove('Links.txt')
+if os.path.exists('Links.txt'):
+    os.remove('Links.txt')
