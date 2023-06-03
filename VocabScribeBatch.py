@@ -1,11 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
 import re
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+
+webdriver_path = 'Chrome'
+
+driver = webdriver.Chrome(service=Service(webdriver_path))
 
 url = input("Enter Vocabulary.com link: ")
 
-response = requests.get(url)
-html_content = response.text
+driver.get(url)
+
+html_content = driver.page_source
 
 soup = BeautifulSoup(html_content, 'html.parser')
 
@@ -21,8 +28,8 @@ if wordlist:
                 links.append(link)
 
     for link in links:
-        response = requests.get(link)
-        html_content = response.text
+        driver.get(link)
+        html_content = driver.page_source
         soup = BeautifulSoup(html_content, 'html.parser')
         words = soup.find_all('a', class_='word')
         definitions = soup.find_all('div', class_='definition')
@@ -61,3 +68,4 @@ else:
     with open(filename, 'w', encoding='utf-8') as f:
         f.write('\n'.join(word_list))
     print(f"Words, definitions, and examples have been written to {filename}.")
+driver.quit()
