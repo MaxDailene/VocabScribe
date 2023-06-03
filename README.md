@@ -4,19 +4,26 @@ This is a Python script that scrapes Vocabulary.com lists and retrieves words, d
 
 ## Requirements
 
-- requests library
-- Beautiful Soup 4 library
+- Beautiful Soup library
+- selenium library
+- Chrome WebDriver
 
 You can install the libraries using pip:
 ```
-pip install requests
-pip install beautifulsoup4
+pip install beautifulsoup4 selenium
 ```
+
+Make sure your Chrome folder is in the same directory as the script.
 
 ## Usage
 
-Run the script and enter the link to a Vocabulary.com list when prompted.
-The script will extract the words, definitions, and examples from the list(s) and write them to a text file with the list name.
+Run the script by executing the following command (or by simply clicking on it)
+```
+python scraper.py
+```
+
+Enter the link to a Vocabulary.com list when prompted.
+The script will navigate to the provided URL and retrieve the words, definitions, and examples from the list(s) and write them to a text file with the list name.
 
 ## Example
 ```
