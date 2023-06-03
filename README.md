@@ -19,7 +19,7 @@ Make sure the "Chrome" folder is in the same directory as the script.
 
 Run the script by executing the following command (or by simply clicking on it)
 ```
-python scraper.py
+python VocabScribe.py
 ```
 
 Enter the link to a Vocabulary.com list when prompted.
