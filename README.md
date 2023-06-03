@@ -13,7 +13,7 @@ You can install the libraries using pip:
 pip install beautifulsoup4 selenium
 ```
 
-Make sure your Chrome folder is in the same directory as the script.
+Make sure the "Chrome" folder is in the same directory as the script.
 
 ## Usage
 
