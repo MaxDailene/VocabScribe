@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+import time
 
 webdriver_path = 'Chrome'
 
@@ -29,6 +30,7 @@ if wordlist:
 
     word_list = []
     for link in links:
+        time.sleep(5)
         driver.get(link)
         html_content = driver.page_source
         soup = BeautifulSoup(html_content, 'html.parser')
