@@ -70,7 +70,10 @@ if wordlist:
 else:
     words = soup.find_all('a', class_='word')
     definitions = soup.find_all('div', class_='definition')
-    examples = soup.find_all('div', class_='example')
+    if soup.find('div', class_='description'):
+      examples = soup.find_all('div', class_='description')
+    else:
+      examples = soup.find_all('div', class_='example')
     word_list = []
     for i in range(len(words)):
         word = re.sub(r'\s+', ' ', words[i].text.strip())
