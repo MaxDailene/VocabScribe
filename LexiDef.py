@@ -1,3 +1,5 @@
+import os
+
 input_file = 'OneFile.txt'
 words_file = 'Lexi.txt'
 examples_file = 'Examples.txt'
@@ -26,3 +28,6 @@ with open(words_file, 'w', encoding='utf-8') as file:
 
 with open(examples_file, 'w', encoding='utf-8') as file:
     file.write('\n'.join(example_lines))
+
+if os.path.exists(examples_file) and os.stat(examples_file).st_size == 0:
+    os.remove(examples_file)
