@@ -6,9 +6,31 @@ import time
 import os
 import random
 
-def scrape_vocabulary(url, driver_path):
-    driver = webdriver.Chrome(service=Service(driver_path))
+def scrape_vocabulary_links(url):
+    driver = webdriver.Chrome()
     driver.get(url)
+    
+    html_content = driver.page_source
+    soup = BeautifulSoup(html_content, 'html.parser')
+    
+    links = []
+
+    wordlist = soup.find_all('li', class_='wordlist')
+    if wordlist:
+        for li in wordlist:
+            header = li.find('div', class_='header')
+            if header:
+                h2 = header.find('h2')
+                if h2 and h2.find('a'):
+                    link = "https://www.vocabulary.com/" + h2.find('a')['href']
+                    links.append(link)
+
+    driver.quit()
+    return links
+
+def scrape_word_data(link):
+    driver = webdriver.Chrome()
+    driver.get(link)
     
     html_content = driver.page_source
     soup = BeautifulSoup(html_content, 'html.parser')
@@ -41,11 +63,17 @@ def scrape_vocabulary(url, driver_path):
     return filename
 
 def main():
-    driver_path = 'Chrome'  # Update this with the path to your Chrome WebDriver
     url = input("Enter Vocabulary.com link: ")
+
+    links = scrape_vocabulary_links(url)
     
-    filename = scrape_vocabulary(url, driver_path)
-    print(f"Words, definitions, and examples have been written to {filename}.")
+    if links:
+        for link in links:
+            filename = scrape_word_data(link)
+            print(f"Words, definitions, and examples have been written to {filename}.")
+    else:
+        filename = scrape_word_data(url)
+        print(f"Words, definitions, and examples have been written to {filename}.")
     
     batch_filename = 'OneFile.txt'
     with open(batch_filename, 'w', encoding='utf-8') as batch_file:
