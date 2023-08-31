@@ -31,7 +31,8 @@ def main():
                 with open("Words-ExamplePairs.txt", "a", encoding="utf-8") as file:
                     sentences_str = '\t'.join(sentences) if sentences else ''
                     file.write("{}\t{}\t{}\t{}\n".format(word, short_paragraph, long_paragraph, sentences_str))
-                
+                    driver.quit()
+                    driver = webdriver.Chrome()
                 if scrape_next_page:
                     next_link = driver.find_element("css selector", "a.next.right")
                     next_link.click()
