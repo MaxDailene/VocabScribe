@@ -62,6 +62,15 @@ def scrape_word_data(link):
     driver.quit()
     return filename
 
+def generate_unique_filename(base_filename):
+    index = 1
+    while True:
+        filename = f"{base_filename}{index}.txt"
+        if not os.path.exists(filename):
+            return filename
+        index += 1
+
+
 def main():
     url = input("Enter Vocabulary.com link: ")
 
@@ -75,12 +84,20 @@ def main():
         filename = scrape_word_data(url)
         print(f"Words, definitions, and examples have been written to {filename}.")
     
-    batch_filename = 'OneFile.txt'
+    batch_base_filename = 'OneFile'
+    batch_filename = generate_unique_filename(batch_base_filename)
+
+    combined_text = ''
+
+    for filename in os.listdir():
+        if filename.endswith('.txt') and 'Vocabulary_List' in filename:
+            with open(filename, 'r', encoding='utf-8') as f:
+                combined_text += f.read().strip() + '\n'
+            if filename != batch_filename:
+                os.remove(filename)
+
     with open(batch_filename, 'w', encoding='utf-8') as batch_file:
-        for filename in os.listdir():
-            if filename.endswith('.txt') and 'Vocabulary_List' in filename:
-                with open(filename, 'r', encoding='utf-8') as f:
-                    batch_file.write(f.read().strip() + '\n')
+        batch_file.write(combined_text)
 
     if os.path.exists('Links.txt'):
         os.remove('Links.txt')
